@@ -6,13 +6,13 @@ resource "random_password" "password" {
 
 resource   "azurerm_resource_group"   "rg"   { 
    name   =   var.rg_name
-   location   =   "northeurope" 
+   location   =   "westeurope" 
  } 
 
  resource   "azurerm_virtual_network"   "myvnet"   { 
    name   =   var.vnet_name
    address_space   =   var.vnet_address_space
-   location   =   "northeurope" 
+   location   =   "westeurope" 
    resource_group_name   =   azurerm_resource_group.rg.name 
  } 
 
@@ -25,7 +25,7 @@ resource   "azurerm_resource_group"   "rg"   {
 
  resource   "azurerm_public_ip"   "myvm1publicip"   { 
    name   =   "pip3" 
-   location   =   "northeurope" 
+   location   =   "westeurope" 
    resource_group_name   =   azurerm_resource_group.rg.name 
    allocation_method   =   "Dynamic" 
    sku   =   "Basic" 
@@ -33,7 +33,7 @@ resource   "azurerm_resource_group"   "rg"   {
 
  resource   "azurerm_network_interface"   "myvm1nic"   { 
    name   =   var.nic_name
-   location   =   "northeurope" 
+   location   =   "westurope" 
    resource_group_name   =   azurerm_resource_group.rg.name 
 
    ip_configuration   { 
@@ -46,7 +46,7 @@ resource   "azurerm_resource_group"   "rg"   {
 
  resource   "azurerm_windows_virtual_machine"   "example"   { 
    name                    =   var.vm_name   
-   location                =   "northeurope" 
+   location                =   "westeurope" 
    resource_group_name     =   azurerm_resource_group.rg.name 
    network_interface_ids   =   [ azurerm_network_interface.myvm1nic.id ] 
    size                    =   var.vm_size 
